@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For My Watermelon 🍉</title>
+  <link rel="icon" href="webpic (1).png" type="image/png">
+  
+  
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      overflow: hidden;
+    }
+
+   
+    #splash {
+      background: linear-gradient(135deg, #fff9c4, #ffe082, #fff176); 
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    #pressText {
+      font-size: 48px;
+      color: #d17c00;
+      text-align: center;
+      font-family: 'Pacifico', cursive;
+      position: absolute;
+      animation: moveUp 1s forwards 1s; 
+    }
+
+    
+    @keyframes moveUp {
+      0% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(-100px); 
+      }
+    }
+
+    #custardEmoji {
+      font-size: 100px;
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      animation: popIn 0.6s forwards 3s; 
+      transition: transform 0.3s ease, top 0.3s ease, left 0.3s ease; 
+    }
+
+    
+    @keyframes popIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      50% {
+        transform: scale(1.2);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    
+    #mainPage {
+      display: none;
+      background: linear-gradient(135deg, #fffde7, #ffcc80);
+      text-align: center;
+      padding: 50px;
+      color: #4a4a4a;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .content {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 52px;
+      color: #ffb74d;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 20px;
+      margin: 10px 0;
+    }
+
+    .emoji {
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 15px 30px;
+      background: linear-gradient(135deg, #7ed957, #ff4d6d);
+      color: white;
+      text-decoration: none;
+      border-radius: 20px;
+      font-size: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    a:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #5dc942, #e63950);
+    }
+  </style>
+</head>
+<body>
+
+  
+  <div id="splash">
+    <div id="pressText">Press the custard 🍮</div>
+    <div id="custardEmoji">🍮</div>
+  </div>
+
+  
+  <div id="mainPage">
+    <div class="content">
+      <div class="emoji">from your cute Custard 🎀🍮</div>
+      <h1>Happy Birthday, My dear Watermelon 🍉!</h1>
+      <p>I wrote all of this for you...</p>
+      <p>please read it all carefully❤️</p>
+      <a href="https://drive.google.com/file/d/12GlEAO4iaCKBD_WZ-8PBHa3ltEDriXmp/view?usp=sharing" target="_blank">
+        🍮 Click me 🍉
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const custard = document.getElementById("custardEmoji");
+    const pressText = document.getElementById("pressText");
+    let clickCount = 0;
+
+    function moveCustard() {
+      const padding = 100;
+      const x = Math.random() * (window.innerWidth - padding);
+      const y = Math.random() * (window.innerHeight - padding);
+      custard.style.left = `${x}px`;
+      custard.style.top = `${y}px`;
+    }
+
+    custard.addEventListener("click", () => {
+      clickCount++;
+      moveCustard();
+
+      
+      custard.style.transition = "transform 0.3s ease, top 0.3s ease, left 0.3s ease";
+      custard.style.transform = `translate(-50%, -50%) scale(1.5)`; 
+
+      if (clickCount >= 7) {
+        setTimeout(() => {
+          document.getElementById("splash").style.display = "none";
+          document.getElementById("mainPage").style.display = "flex";
+        }, 600);
+      }
+    });
+  </script>
+
+</body>
+</html>
